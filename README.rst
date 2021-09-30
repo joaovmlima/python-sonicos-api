@@ -21,8 +21,8 @@ Examples
 | ``getCFSLists("192.168.1.1", False)``
 | Returns all the Content Filter lists configured in the firewall at 192.168.1.1
 
-***********
+******************
 Supported Actions
-***********
+******************
 | Currently, this lib is focused on the CFS feature of the firewall, so there's a very limited number of functions to other features.
 | I'm hoping to implement it along the way, feel free to help :)
