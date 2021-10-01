@@ -12,10 +12,21 @@ It is built on firmware 6.5.4, compatibility with 7.0.0 should be fine but its y
 | Currently only the HTTP Basic login method is supported.
 | If you use HTTPS, it is secure enough ;)
 
+See it on GitHub `here <https://github.com/joaovmlima/python-sonicos-api>`_.
+
+*******
+Usage
+*******
+| Install with:
+| ``pip install sonicos-api`` or ``poetry add sonicos-api``
+
+| Import with:
+| ``from sonicos_api import sonicOS as snwl``
+
 ***********
 Examples
 ***********
-| ``fwLogin("https://192.168.1.1", "admin", "password", False)``
+| ``fwLogin("https://192.168.1.1:3443", "admin", "password", False)``
 | Logs into the firewall for executing the other functions.
 
 | ``getCFSLists("192.168.1.1", False)``
