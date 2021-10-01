@@ -10,6 +10,9 @@ headers = OrderedDict(
             ('charset', 'UTF-8')
          ])
 
+def isSuccessStatus(status_code):
+    return (status_code >= 200 and status_code < 300)
+
 def fwLogin(fwAddress: str, fwUser: str, fwPassword: str, verifySSLCert: bool):
     # make credentials base64 encoded
     credentials = fwUser+":"+fwPassword
@@ -28,9 +31,9 @@ def fwLogin(fwAddress: str, fwUser: str, fwPassword: str, verifySSLCert: bool):
          ])
 
     response = requests.request("POST", url, data=payload, headers=headers, verify=verifySSLCert)
-    response = response.json()
-    response = json.dumps(response).loads(response)
-
+    if (isSuccessStatus):
+        response = response.text
+        response = json.loads(response) 
     return response
 
 def fwLogout(fwAddress: str, verifySSLCert: bool):
@@ -38,9 +41,9 @@ def fwLogout(fwAddress: str, verifySSLCert: bool):
     payload = ""
 
     response = requests.request("DELETE", url, data=payload, headers=headers, verify=verifySSLCert)
-    response = response.json()
-    response = json.dumps(response).loads(response)
-
+    if (isSuccessStatus):
+        response = response.text
+        response = json.loads(response)
     return response
 
 def configMode(fwAddress: str, verifySSLCert: bool):
@@ -56,36 +59,36 @@ def commitChanges(fwAddress: str, verifySSLCert: bool):
     url = f"{fwAddress}/api/sonicos/config/pending"
     payload = ""
     response = requests.request("POST", url, headers=headers, data=payload, verify=verifySSLCert)
-    response = response.json()
-    response = json.dumps(response).loads(response)
-
+    if (isSuccessStatus):
+        response = response.text
+        response = json.loads(response)
     return response
 
 def getCFSProfiles(fwAddress: str, verifySSLCert: bool):
     url = f"{fwAddress}/api/sonicos/content-filter/profiles"
 
     response = requests.request("GET", url, headers=headers, verify=verifySSLCert)
-    response = response.json()
-    response = json.dumps(response).loads(response)
-    
+    if (isSuccessStatus):
+        response = response.text
+        response = json.loads(response)
     return response
 
 def getCFSLists(fwAddress: str, verifySSLCert: bool):
     url = f"{fwAddress}/api/sonicos/content-filter/uri-list-objects"
     payload = ""
     response = requests.request("GET", url, headers=headers, data=payload, verify=verifySSLCert)
-    response = response.json()
-    response = json.dumps(response).loads(response)
-    
+    if (isSuccessStatus):
+        response = response.text
+        response = json.loads(response)
     return response
 
 def getSpecificCFSList(fwAddress: str, cfsListName: str, verifySSLCert: bool):
     url = f"{fwAddress}/api/sonicos/content-filter/uri-list-objects/name/{cfsListName}"
     payload = ""
     response = requests.request("GET", url, headers=headers, data=payload, verify=verifySSLCert)
-    response = response.json()
-    response = json.dumps(response).loads(response)
-    
+    if (isSuccessStatus):
+        response = response.text
+        response = json.loads(response)
     return response
 
 def insertIntoCFSList(fwAddress: str, cfsName: str, uri: str, verifySSLCert: bool):
@@ -98,9 +101,9 @@ def insertIntoCFSList(fwAddress: str, cfsName: str, uri: str, verifySSLCert: boo
     ]}}
 
     response = requests.request("PUT", url, json=payload, headers=headers, verify=verifySSLCert)
-    response = response.json()
-    response = json.dumps(response).loads(response)
-
+    if (isSuccessStatus):
+        response = response.text
+        response = json.loads(response)
     return response
 
 def removeFromCFS(fwAddress: str, cfsName: str, uri: str, verifySSLCert: bool):
@@ -114,9 +117,9 @@ def removeFromCFS(fwAddress: str, cfsName: str, uri: str, verifySSLCert: bool):
             ]}}
 
     response = requests.request("DELETE", url, json=payload, headers=headers, verify=verifySSLCert)
-    response = response.json()
-    response = json.dumps(response).loads(response)
-
+    if (isSuccessStatus):
+        response = response.text
+        response = json.loads(response)
     return response
 
 def getFwInfo(fwAddress, verifySSLCert: bool):
@@ -124,7 +127,7 @@ def getFwInfo(fwAddress, verifySSLCert: bool):
 
     payload = ""
     response = requests.request("GET", url, headers=headers, data=payload, verify=verifySSLCert)
-    response = response.json()
-    response = json.dumps(response).loads(response)
-    
+    if (isSuccessStatus):
+        response = response.text
+        response = json.loads(response)
     return response.json()
