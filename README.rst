@@ -26,10 +26,10 @@ Usage
 ***********
 Examples
 ***********
-| ``fwLogin("https://192.168.1.1:3443", "admin", "password", False)``
+| ``snwl.fwLogin("https://192.168.1.1:3443", "admin", "password", False)``
 | Logs into the firewall for executing the other functions.
 
-| ``getCFSLists("192.168.1.1", False)``
+| ``snwl.getCFSLists("192.168.1.1", False)``
 | Returns all the Content Filter lists configured in the firewall at 192.168.1.1
 
 ******************
