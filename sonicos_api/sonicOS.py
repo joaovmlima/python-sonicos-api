@@ -130,4 +130,4 @@ def getFwInfo(fwAddress, verifySSLCert: bool):
     if (isSuccessStatus):
         response = response.text
         response = json.loads(response)
-    return response.json()
+    return response
