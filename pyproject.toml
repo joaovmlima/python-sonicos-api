@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sonicos-api"
-version = "0.1.1"
+version = "0.1.4"
 description = "Lib to communicate with SonicWall's API"
 authors = ["joaovmlima <oi.oaoj@gmail.com>"]
 readme = "README.rst"
